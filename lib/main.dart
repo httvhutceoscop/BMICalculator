@@ -12,28 +12,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'BMI Calculator',
       theme: ThemeData(
         primarySwatch: Colors.deepOrange,
         backgroundColor: Colors.deepOrange,
       ),
-      home: MyHomePage(title: 'BMI'),
+      home: MyHomePage(title: 'BMI Calculator'),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
   final String title;
 
   @override
@@ -90,7 +80,6 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    print('1. initState');
     _weightController.text = _weight.toStringAsFixed(1);
     _heightController.text = _height.toStringAsFixed(1);
   }
@@ -294,9 +283,9 @@ class _MyHomePageState extends State<MyHomePage> {
                       width: 79.0,
                       child: TextFormField(
                         controller: _weightController,
-                        // initialValue: "$_weight",
                         style: numberStyle,
-                        keyboardType: TextInputType.number,
+                        keyboardType:
+                            TextInputType.numberWithOptions(decimal: true),
                         decoration: InputDecoration(
                           border: InputBorder.none,
                           contentPadding: EdgeInsets.all(0.0),
@@ -348,12 +337,24 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Widget _buildFooter() {
-    return Container(
-      child: FlatButton(
-        padding: EdgeInsets.all(10.0),
-        color: Colors.deepOrange,
-        onPressed: _goToCalculateBMI,
-        child: Text("CALCULATE BMI", style: textStyle),
+    return SizedBox(
+      height: 84.0,
+      child: Column(
+        children: [
+          Container(
+            height: 42.0,
+            decoration: BoxDecoration(
+              color: Colors.deepOrange,
+            ),
+            child: FlatButton(
+              onPressed: _goToCalculateBMI,
+              child: Text("CALCULATE BMI", style: textStyle),
+            ),
+          ),
+          Container(
+            child: Text('ads'),
+          ),
+        ],
       ),
     );
   }

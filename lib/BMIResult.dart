@@ -189,17 +189,27 @@ class BMIResult extends StatelessWidget {
   }
 
   Widget _buildFooter(BuildContext context) {
-    return Container(
-      child: FlatButton(
-        padding: EdgeInsets.all(10),
-        color: Colors.deepOrange,
-        onPressed: () {
-          Navigator.pop(context);
-        },
-        child: Text(
-          "CALCULATE AGAIN",
-          style: TextStyle(color: Colors.white, fontSize: 16.0),
-        ),
+    return SizedBox(
+      height: 84.0,
+      child: Column(
+        children: [
+          Container(
+            height: 42.0,
+            decoration: BoxDecoration(
+              color: Colors.deepOrange,
+            ),
+            child: FlatButton(
+              onPressed: () => Navigator.pop(context),
+              child: Text(
+                "CALCULATE AGAIN",
+                style: TextStyle(color: Colors.white, fontSize: 16.0),
+              ),
+            ),
+          ),
+          Container(
+            child: Text('ads'),
+          ),
+        ],
       ),
     );
   }
